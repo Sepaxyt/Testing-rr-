@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAAL MOD Control Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffc107;
+            --primary-dark: #ffa000;
+            --secondary: #212121;
+            --background: #121212;
+            --card-bg: #1e1e1e;
+            --text: #ffffff;
+            --text-secondary: #bdbdbd;
+            --success: #4caf50;
+            --danger: #f44336;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--secondary);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 10px;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .setting-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .setting-name {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .setting-value {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--success);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .slider-text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .slider-text.on {
+            left: 8px;
+            display: none;
+        }
+
+        .slider-text.off {
+            right: 8px;
+        }
+
+        input:checked + .slider .slider-text.on {
+            display: block;
+        }
+
+        input:checked + .slider .slider-text.off {
+            display: none;
+        }
+
+        .range-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .range-slider {
+            flex-grow: 1;
+            margin: 0 15px;
+            -webkit-appearance: none;
+            height: 8px;
+            background: #555;
+            outline: none;
+            border-radius: 4px;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .range-value {
+            width: 50px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .save-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .save-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        .status.success {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--success);
+            display: block;
+        }
+
+        .status.error {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--danger);
+            display: block;
+        }
+
+        .copy-section {
+            margin-top: 20px;
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: var(--border-radius);
+        }
+
+        .copy-textarea {
+            width: 100%;
+            height: 100px;
+            background-color: var(--secondary);
+            color: var(--text);
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            resize: none;
+        }
+
+        .copy-btn {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>KAAL MOD CONTROL PANEL</h1>
+            <p class="subtitle">Remote configuration for PUBG Mobile Hack</p>
+        </header>
+
+        <div class="card">
+            <h2 class="card-title">
+                <i>👁️</i> ESP Settings
+            </h2>
+            <div class="settings-grid" id="esp-settings">
+                <!-- ESP settings items same as before -->
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Line ESP</div>
+                        <div class="setting-value">Draw line to enemies</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-line" checked>
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <!-- Other ESP settings... -->
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">
+                <i>🎯</i> Aimbot Settings
+            </h2>
+            <div class="settings-grid" id="aimbot-settings">
+                <!-- Aimbot settings items same as before -->
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Enable Aimbot</div>
+                        <div class="setting-value">Auto target enemies</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-enable" checked>
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <!-- Other Aimbot settings... -->
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">
+                <i>🧠</i> Memory Settings
+            </h2>
+            <div class="settings-grid" id="memory-settings">
+                <!-- Memory settings items same as before -->
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Wide View</div>
+                        <div class="setting-value">Increase field of view</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="memory-wide_view">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <!-- Other Memory settings... -->
+            </div>
+        </div>
+
+        <div class="copy-section">
+            <h3>Configuration JSON</h3>
+            <textarea class="copy-textarea" id="config-json" readonly></textarea>
+            <button class="copy-btn" id="copy-btn">COPY TO CLIPBOARD</button>
+        </div>
+
+        <div class="status" id="status-message"></div>
+    </div>
+
+    <script>
+        // Configuration
+        const configUrl = 'https://raw.githubusercontent.com/Sepaxyt/Testing-rr-/main/config.json';
+        
+        // Update range value displays
+        document.getElementById('aimbot-recoil_control').addEventListener('input', function() {
+            document.getElementById('recoil-value').textContent = this.value;
+            updateConfigJson();
+        });
+
+        document.getElementById('aimbot-radius').addEventListener('input', function() {
+            document.getElementById('radius-value').textContent = this.value;
+            updateConfigJson();
+        });
+
+        document.getElementById('memory-wide_view_range').addEventListener('input', function() {
+            document.getElementById('view-range-value').textContent = this.value;
+            updateConfigJson();
+        });
+
+        // Update JSON when any setting changes
+        document.querySelectorAll('input[type="checkbox"], input[type="range"]').forEach(input => {
+            input.addEventListener('change', updateConfigJson);
+        });
+
+        // Copy to clipboard
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const textarea = document.getElementById('config-json');
+            textarea.select();
+            document.execCommand('copy');
+            
+            showStatus('JSON copied to clipboard!', 'success');
+        });
+
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('status-message');
+            statusElement.textContent = message;
+            statusElement.className = 'status ' + type;
+            
+            setTimeout(() => {
+                statusElement.style.opacity = '0';
+                setTimeout(() => {
+                    statusElement.className = 'status';
+                    statusElement.style.opacity = '1';
+                }, 500);
+            }, 3000);
+        }
+
+        // Generate the config JSON
+        function updateConfigJson() {
+            const settings = {
+                esp: {
+                    line: document.getElementById('esp-line').checked,
+                    skeleton: document.getElementById('esp-skeleton').checked,
+                    health: document.getElementById('esp-health').checked,
+                    distance: document.getElementById('esp-distance').checked,
+                    weapon_name: document.getElementById('esp-weapon_name').checked,
+                    target: document.getElementById('esp-target').checked,
+                    vehicle_name: document.getElementById('esp-vehicle_name').checked,
+                    item_esp: document.getElementById('esp-item_esp').checked,
+                    alert: document.getElementById('esp-alert').checked
+                },
+                aimbot: {
+                    enable: document.getElementById('aimbot-enable').checked,
+                    vis_check: document.getElementById('aimbot-vis_check').checked,
+                    ignore_knock: document.getElementById('aimbot-ignore_knock').checked,
+                    recoil_control: parseFloat(document.getElementById('aimbot-recoil_control').value),
+                    radius: parseFloat(document.getElementById('aimbot-radius').value),
+                    ignore_bot: document.getElementById('aimbot-ignore_bot').checked
+                },
+                memory: {
+                    wide_view: document.getElementById('memory-wide_view').checked,
+                    wide_view_range: parseFloat(document.getElementById('memory-wide_view_range').value)
+                }
+            };
+
+            const jsonString = JSON.stringify(settings, null, 2);
+            document.getElementById('config-json').value = jsonString;
+        }
+
+        // Load current settings from GitHub
+        async function loadSettings() {
+            try {
+                // Add cache busting parameter
+                const response = await fetch(configUrl + '?t=' + new Date().getTime());
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load config');
+                }
+                
+                const settings = await response.json();
+                
+                // Apply settings to UI
+                document.getElementById('esp-line').checked = settings.esp.line;
+                document.getElementById('esp-skeleton').checked = settings.esp.skeleton;
+                document.getElementById('esp-health').checked = settings.esp.health;
+                document.getElementById('esp-distance').checked = settings.esp.distance;
+                document.getElementById('esp-weapon_name').checked = settings.esp.weapon_name;
+                document.getElementById('esp-target').checked = settings.esp.target;
+                document.getElementById('esp-vehicle_name').checked = settings.esp.vehicle_name;
+                document.getElementById('esp-item_esp').checked = settings.esp.item_esp;
+                document.getElementById('esp-alert').checked = settings.esp.alert;
+                
+                document.getElementById('aimbot-enable').checked = settings.aimbot.enable;
+                document.getElementById('aimbot-vis_check').checked = settings.aimbot.vis_check;
+                document.getElementById('aimbot-ignore_knock').checked = settings.aimbot.ignore_knock;
+                document.getElementById('aimbot-recoil_control').value = settings.aimbot.recoil_control;
+                document.getElementById('recoil-value').textContent = settings.aimbot.recoil_control;
+                document.getElementById('aimbot-radius').value = settings.aimbot.radius;
+                document.getElementById('radius-value').textContent = settings.aimbot.radius;
+                document.getElementById('aimbot-ignore_bot').checked = settings.aimbot.ignore_bot;
+                
+                document.getElementById('memory-wide_view').checked = settings.memory.wide_view;
+                document.getElementById('memory-wide_view_range').value = settings.memory.wide_view_range;
+                document.getElementById('view-range-value').textContent = settings.memory.wide_view_range;
+                
+                // Update JSON display
+                updateConfigJson();
+                
+                showStatus('Settings loaded successfully!', 'success');
+            } catch (error) {
+                console.error('Error loading settings:', error);
+                showStatus('Error loading settings. Using defaults.', 'error');
+                
+                // Set default values
+                document.getElementById('esp-line').checked = true;
+                document.getElementById('esp-skeleton').checked = true;
+                document.getElementById('esp-health').checked = true;
+                document.getElementById('esp-distance').checked = true;
+                document.getElementById('esp-weapon_name').checked = true;
+                document.getElementById('esp-target').checked = true;
+                document.getElementById('esp-vehicle_name').checked = true;
+                document.getElementById('esp-item_esp').checked = true;
+                document.getElementById('esp-alert').checked = true;
+                
+                document.getElementById('aimbot-enable').checked = true;
+                document.getElementById('aimbot-vis_check').checked = true;
+                document.getElementById('aimbot-ignore_knock').checked = true;
+                document.getElementById('aimbot-recoil_control').value = 1.2;
+                document.getElementById('recoil-value').textContent = '1.2';
+                document.getElementById('aimbot-radius').value = 450;
+                document.getElementById('radius-value').textContent = '450';
+                document.getElementById('aimbot-ignore_bot').checked = true;
+                
+                document.getElementById('memory-wide_view').checked = false;
+                document.getElementById('memory-wide_view_range').value = 120;
+                document.getElementById('view-range-value').textContent = '120';
+                
+                updateConfigJson();
+            }
+        }
+
+        // Load settings when page loads
+        window.addEventListener('DOMContentLoaded', loadSettings);
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadSettings, 30000);
+    </script>
+</body>
+</html>
