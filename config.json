@@ -1,0 +1,25 @@
+{
+    "esp": {
+        "line": true,
+        "skeleton": true,
+        "health": true,
+        "distance": true,
+        "weapon_name": true,
+        "target": true,
+        "vehicle_name": true,
+        "item_esp": true,
+        "alert": true
+    },
+    "aimbot": {
+        "enable": true,
+        "vis_check": true,
+        "ignore_knock": true,
+        "recoil_control": 1.2,
+        "radius": 450.0,
+        "ignore_bot": true
+    },
+    "memory": {
+        "wide_view": false,
+        "wide_view_range": 120.0
+    }
+}
