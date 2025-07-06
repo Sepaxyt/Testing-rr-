@@ -1,0 +1,17 @@
+{
+  "active": true,
+  "version": "1.4",
+  
+  "line": true,
+  "skeleton": true,
+  "health": true,
+  "distance": true,
+  "name": false,
+  "teamid": false,
+  
+  "vehicle_name": true,
+  "vehicle_health": false,
+  
+  "loot_items": false,
+  "weapons": true
+}
