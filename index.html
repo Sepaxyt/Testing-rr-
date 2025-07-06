@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAAL MOD Control Panel</title>
+    <title>KAAL MOD CONTROL PANEL</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -287,6 +287,26 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .sync-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: none;
+            animation: pulse 2s infinite;
+        }
     </style>
 </head>
 <body>
@@ -541,15 +561,27 @@
         <button class="refresh-btn" id="refresh-btn">REFRESH FROM GITHUB</button>
         
         <div class="status" id="status-message"></div>
+        <div class="sync-indicator" id="sync-indicator">SYNCING...</div>
     </div>
 
     <script>
         // Configuration
         const configUrl = 'https://raw.githubusercontent.com/Sepaxyt/Testing-rr-/main/config.json';
-        
+        let refreshInterval = 5000; // 5 seconds refresh rate
+        let isSyncing = false;
+        let syncTimer = null;
+
         // Load settings from localStorage
         function loadLocalSettings() {
-            const settings = JSON.parse(localStorage.getItem('kaal_mod_settings')) || {
+            const settings = JSON.parse(localStorage.getItem('kaal_mod_settings')) || getDefaultSettings();
+            applySettingsToUI(settings);
+            updateConfigJson();
+            return settings;
+        }
+
+        // Get default settings
+        function getDefaultSettings() {
+            return {
                 esp: {
                     line: false,
                     skeleton: false,
@@ -574,10 +606,6 @@
                     wide_view_range: 120
                 }
             };
-
-            applySettingsToUI(settings);
-            updateConfigJson();
-            return settings;
         }
 
         // Save settings to localStorage
@@ -618,6 +646,7 @@
 
         // Apply settings to UI
         function applySettingsToUI(settings) {
+            // ESP Settings
             document.getElementById('esp-line').checked = settings.esp.line;
             document.getElementById('esp-skeleton').checked = settings.esp.skeleton;
             document.getElementById('esp-health').checked = settings.esp.health;
@@ -628,6 +657,7 @@
             document.getElementById('esp-item_esp').checked = settings.esp.item_esp;
             document.getElementById('esp-alert').checked = settings.esp.alert;
             
+            // Aimbot Settings
             document.getElementById('aimbot-enable').checked = settings.aimbot.enable;
             document.getElementById('aimbot-vis_check').checked = settings.aimbot.vis_check;
             document.getElementById('aimbot-ignore_knock').checked = settings.aimbot.ignore_knock;
@@ -637,6 +667,7 @@
             document.getElementById('radius-value').textContent = settings.aimbot.radius;
             document.getElementById('aimbot-ignore_bot').checked = settings.aimbot.ignore_bot;
             
+            // Memory Settings
             document.getElementById('memory-wide_view').checked = settings.memory.wide_view;
             document.getElementById('memory-wide_view_range').value = settings.memory.wide_view_range;
             document.getElementById('view-range-value').textContent = settings.memory.wide_view_range;
@@ -663,11 +694,20 @@
             }, 3000);
         }
 
+        // Show sync indicator
+        function showSyncIndicator(show) {
+            const indicator = document.getElementById('sync-indicator');
+            indicator.style.display = show ? 'block' : 'none';
+            isSyncing = show;
+        }
+
         // Load settings from GitHub
         async function loadFromGitHub() {
+            if (isSyncing) return;
+            
+            showSyncIndicator(true);
             try {
-                // Add cache busting parameter
-                const response = await fetch(configUrl + '?t=' + new Date().getTime());
+                const response = await fetch(`${configUrl}?t=${Date.now()}`);
                 
                 if (!response.ok) {
                     throw new Error('Failed to load config');
@@ -681,15 +721,20 @@
                 console.error('Error loading settings:', error);
                 showStatus('Error loading from GitHub. Using local settings.', 'error');
                 loadLocalSettings();
+            } finally {
+                showSyncIndicator(false);
             }
         }
 
+        // Initialize auto-refresh
+        function startAutoRefresh() {
+            if (syncTimer) clearInterval(syncTimer);
+            syncTimer = setInterval(loadFromGitHub, refreshInterval);
+        }
+
         // Initialize event listeners
-        function init() {
-            // Load local settings first
-            loadLocalSettings();
-            
-            // Update range value displays
+        function initEventListeners() {
+            // Range sliders
             document.getElementById('aimbot-recoil_control').addEventListener('input', function() {
                 document.getElementById('recoil-value').textContent = this.value;
                 saveLocalSettings();
@@ -705,12 +750,12 @@
                 saveLocalSettings();
             });
 
-            // Save settings when any checkbox changes
+            // Checkboxes
             document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
                 checkbox.addEventListener('change', saveLocalSettings);
             });
 
-            // Copy to clipboard
+            // Copy button
             document.getElementById('copy-btn').addEventListener('click', function() {
                 const textarea = document.getElementById('config-json');
                 textarea.select();
@@ -718,12 +763,20 @@
                 showStatus('JSON copied to clipboard!', 'success');
             });
 
-            // Refresh from GitHub
-            document.getElementById('refresh-btn').addEventListener('click', loadFromGitHub);
+            // Refresh button
+            document.getElementById('refresh-btn').addEventListener('click', function() {
+                loadFromGitHub();
+                startAutoRefresh();
+            });
         }
 
         // Initialize when page loads
-        window.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLocalSettings();
+            initEventListeners();
+            loadFromGitHub();
+            startAutoRefresh();
+        });
     </script>
 </body>
 </html>
