@@ -309,6 +309,17 @@
             text-align: center;
             max-width: 400px;
         }
+
+        .feature-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -321,40 +332,566 @@
 
     <div class="container">
         <header>
-            <h1>KAAL MOD CONTROL PANEL</h1>
-            <p class="subtitle">Remote configuration for PUBG Mobile Hack</p>
+            <h1>KAAL MOD CONTROL PANEL <span class="feature-tag">v2.0</span></h1>
+            <p class="subtitle">Complete PUBG Mobile Hack Configuration</p>
         </header>
 
         <!-- ESP Settings Section -->
         <div class="card">
             <h2 class="card-title">
-                <i>👁️</i> ESP Settings
+                <i>👁️</i> ESP Settings <span class="feature-tag">15 Features</span>
             </h2>
             <div class="settings-grid" id="esp-settings">
-                <!-- ESP setting items same as before -->
-                <!-- ... -->
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Line ESP <span class="feature-tag">NEW</span></div>
+                        <div class="setting-value">Draw line to enemies</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-line">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Skeleton ESP</div>
+                        <div class="setting-value">Show enemy bone structure</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-skeleton">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Health ESP</div>
+                        <div class="setting-value">Show health bars</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-health">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Distance ESP</div>
+                        <div class="setting-value">Show enemy distance</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-distance">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Weapon ESP</div>
+                        <div class="setting-value">Show equipped weapons</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-weapon_name">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Target ESP</div>
+                        <div class="setting-value">Highlight current target</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-target">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Vehicle ESP</div>
+                        <div class="setting-value">Show vehicle info</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-vehicle_name">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Loot ESP</div>
+                        <div class="setting-value">Highlight items</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-item_esp">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Alert ESP</div>
+                        <div class="setting-value">Enemy detection alerts</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-alert">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Box ESP</div>
+                        <div class="setting-value">Show enemy boxes</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-box">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Name ESP</div>
+                        <div class="setting-value">Show player names</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-name">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Health Color</div>
+                        <div class="setting-value">Dynamic health coloring</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-health_color">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Knocked ESP</div>
+                        <div class="setting-value">Highlight knocked players</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-knocked">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Team ESP</div>
+                        <div class="setting-value">Show teammate info</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-team">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Radar ESP</div>
+                        <div class="setting-value">Mini-map enemy display</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="esp-radar">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
             </div>
         </div>
 
         <!-- Aimbot Settings Section -->
         <div class="card">
             <h2 class="card-title">
-                <i>🎯</i> Aimbot Settings
+                <i>🎯</i> Aimbot Settings <span class="feature-tag">12 Features</span>
             </h2>
             <div class="settings-grid" id="aimbot-settings">
-                <!-- Aimbot setting items same as before -->
-                <!-- ... -->
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Aimbot</div>
+                        <div class="setting-value">Enable auto-aim</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-enable">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Visibility Check</div>
+                        <div class="setting-value">Only visible targets</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-vis_check">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Ignore Knocked</div>
+                        <div class="setting-value">Skip downed players</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-ignore_knock">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Recoil Control</div>
+                        <div class="setting-value">Weapon recoil reduction</div>
+                    </div>
+                    <div class="range-container">
+                        <input type="range" min="0" max="3" step="0.1" value="1.2" class="range-slider" id="aimbot-recoil_control">
+                        <span class="range-value" id="recoil-value">1.2</span>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Aimbot Radius</div>
+                        <div class="setting-value">Target detection range</div>
+                    </div>
+                    <div class="range-container">
+                        <input type="range" min="0" max="1000" step="10" value="450" class="range-slider" id="aimbot-radius">
+                        <span class="range-value" id="radius-value">450</span>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Ignore Bots</div>
+                        <div class="setting-value">Skip AI players</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-ignore_bot">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Headshot Priority</div>
+                        <div class="setting-value">Prefer headshots</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-headshot">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Auto Fire</div>
+                        <div class="setting-value">Automatic shooting</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-auto_fire">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Bullet Speed</div>
+                        <div class="setting-value">Projectile prediction</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-bullet_speed">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Target Switch</div>
+                        <div class="setting-value">Auto target switching</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-target_switch">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">FOV Circle</div>
+                        <div class="setting-value">Show aim field of view</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-fov_circle">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Silent Aim</div>
+                        <div class="setting-value">Undetectable aim</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="aimbot-silent">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
             </div>
         </div>
 
         <!-- Memory Settings Section -->
         <div class="card">
             <h2 class="card-title">
-                <i>🧠</i> Memory Settings
+                <i>🧠</i> Memory Settings <span class="feature-tag">8 Features</span>
             </h2>
             <div class="settings-grid" id="memory-settings">
-                <!-- Memory setting items same as before -->
-                <!-- ... -->
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Wide View</div>
+                        <div class="setting-value">Increase FOV</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="memory-wide_view">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">FOV Range</div>
+                        <div class="setting-value">Field of view angle</div>
+                    </div>
+                    <div class="range-container">
+                        <input type="range" min="60" max="150" step="1" value="120" class="range-slider" id="memory-wide_view_range">
+                        <span class="range-value" id="view-range-value">120</span>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">No Recoil</div>
+                        <div class="setting-value">Remove weapon recoil</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="memory-no_recoil">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">No Spread</div>
+                        <div class="setting-value">Perfect accuracy</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="memory-no_spread">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Fast Run</div>
+                        <div class="setting-value">Increase movement speed</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="memory-fast_run">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">No Grass</div>
+                        <div class="setting-value">Remove grass rendering</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="memory-no_grass">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Instant Hit</div>
+                        <div class="setting-value">Zero bullet travel time</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="memory-instant_hit">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Magic Bullet</div>
+                        <div class="setting-value">Shoot through walls</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="memory-magic_bullet">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Utility Settings Section -->
+        <div class="card">
+            <h2 class="card-title">
+                <i>⚙️</i> Utility Settings <span class="feature-tag">6 Features</span>
+            </h2>
+            <div class="settings-grid" id="utility-settings">
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Auto Pickup</div>
+                        <div class="setting-value">Automatic item collection</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="utility-auto_pickup">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Fast Loot</div>
+                        <div class="setting-value">Quick inventory management</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="utility-fast_loot">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">No Fog</div>
+                        <div class="setting-value">Remove fog effects</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="utility-no_fog">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Car Fly</div>
+                        <div class="setting-value">Vehicle flight mode</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="utility-car_fly">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Speed Hack</div>
+                        <div class="setting-value">Increase movement speed</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="utility-speed_hack">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div>
+                        <div class="setting-name">Anti-Cheat Bypass</div>
+                        <div class="setting-value">Avoid detection</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="utility-anti_cheat">
+                        <span class="slider"></span>
+                        <span class="slider-text on">ON</span>
+                        <span class="slider-text off">OFF</span>
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -376,7 +913,7 @@
         let userChanges = {};
         let currentSettings = {};
 
-        // Initialize default settings
+        // Initialize default settings with all features
         function getDefaultSettings() {
             return {
                 esp: {
@@ -388,7 +925,13 @@
                     target: false,
                     vehicle_name: false,
                     item_esp: false,
-                    alert: false
+                    alert: false,
+                    box: false,
+                    name: false,
+                    health_color: false,
+                    knocked: false,
+                    team: false,
+                    radar: false
                 },
                 aimbot: {
                     enable: false,
@@ -396,11 +939,31 @@
                     ignore_knock: false,
                     recoil_control: 1.2,
                     radius: 450,
-                    ignore_bot: false
+                    ignore_bot: false,
+                    headshot: false,
+                    auto_fire: false,
+                    bullet_speed: false,
+                    target_switch: false,
+                    fov_circle: false,
+                    silent: false
                 },
                 memory: {
                     wide_view: false,
-                    wide_view_range: 120
+                    wide_view_range: 120,
+                    no_recoil: false,
+                    no_spread: false,
+                    fast_run: false,
+                    no_grass: false,
+                    instant_hit: false,
+                    magic_bullet: false
+                },
+                utility: {
+                    auto_pickup: false,
+                    fast_loot: false,
+                    no_fog: false,
+                    car_fly: false,
+                    speed_hack: false,
+                    anti_cheat: false
                 }
             };
         }
@@ -441,10 +1004,8 @@
         function applySettingsToUI(settings) {
             if (isUpdating) return;
             
-            // Show loading overlay during updates
             document.getElementById('lock-overlay').style.display = 'flex';
             
-            // Use requestAnimationFrame for smooth updates
             requestAnimationFrame(() => {
                 try {
                     // ESP Settings
@@ -457,6 +1018,12 @@
                     document.getElementById('esp-vehicle_name').checked = settings.esp.vehicle_name;
                     document.getElementById('esp-item_esp').checked = settings.esp.item_esp;
                     document.getElementById('esp-alert').checked = settings.esp.alert;
+                    document.getElementById('esp-box').checked = settings.esp.box;
+                    document.getElementById('esp-name').checked = settings.esp.name;
+                    document.getElementById('esp-health_color').checked = settings.esp.health_color;
+                    document.getElementById('esp-knocked').checked = settings.esp.knocked;
+                    document.getElementById('esp-team').checked = settings.esp.team;
+                    document.getElementById('esp-radar').checked = settings.esp.radar;
                     
                     // Aimbot Settings
                     document.getElementById('aimbot-enable').checked = settings.aimbot.enable;
@@ -467,11 +1034,31 @@
                     document.getElementById('aimbot-radius').value = settings.aimbot.radius;
                     document.getElementById('radius-value').textContent = settings.aimbot.radius;
                     document.getElementById('aimbot-ignore_bot').checked = settings.aimbot.ignore_bot;
+                    document.getElementById('aimbot-headshot').checked = settings.aimbot.headshot;
+                    document.getElementById('aimbot-auto_fire').checked = settings.aimbot.auto_fire;
+                    document.getElementById('aimbot-bullet_speed').checked = settings.aimbot.bullet_speed;
+                    document.getElementById('aimbot-target_switch').checked = settings.aimbot.target_switch;
+                    document.getElementById('aimbot-fov_circle').checked = settings.aimbot.fov_circle;
+                    document.getElementById('aimbot-silent').checked = settings.aimbot.silent;
                     
                     // Memory Settings
                     document.getElementById('memory-wide_view').checked = settings.memory.wide_view;
                     document.getElementById('memory-wide_view_range').value = settings.memory.wide_view_range;
                     document.getElementById('view-range-value').textContent = settings.memory.wide_view_range;
+                    document.getElementById('memory-no_recoil').checked = settings.memory.no_recoil;
+                    document.getElementById('memory-no_spread').checked = settings.memory.no_spread;
+                    document.getElementById('memory-fast_run').checked = settings.memory.fast_run;
+                    document.getElementById('memory-no_grass').checked = settings.memory.no_grass;
+                    document.getElementById('memory-instant_hit').checked = settings.memory.instant_hit;
+                    document.getElementById('memory-magic_bullet').checked = settings.memory.magic_bullet;
+                    
+                    // Utility Settings
+                    document.getElementById('utility-auto_pickup').checked = settings.utility.auto_pickup;
+                    document.getElementById('utility-fast_loot').checked = settings.utility.fast_loot;
+                    document.getElementById('utility-no_fog').checked = settings.utility.no_fog;
+                    document.getElementById('utility-car_fly').checked = settings.utility.car_fly;
+                    document.getElementById('utility-speed_hack').checked = settings.utility.speed_hack;
+                    document.getElementById('utility-anti_cheat').checked = settings.utility.anti_cheat;
                     
                     updateConfigJson();
                 } catch (e) {
