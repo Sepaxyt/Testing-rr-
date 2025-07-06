@@ -19,7 +19,7 @@
         "ignore_bot": true
     },
     "memory": {
-        "wide_view": false,
+        "wide_view": true,
         "wide_view_range": 120.0
     }
 }
