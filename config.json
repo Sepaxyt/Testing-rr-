@@ -1,6 +1,6 @@
 {
     "esp": {
-        "line": false,
+        "line": true,
         "skeleton": true,
         "health": true,
         "distance": true,
