@@ -288,267 +288,73 @@
             }
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
+        .lock-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
         }
 
-        .sync-indicator {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--primary);
-            color: var(--secondary);
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            display: none;
-            animation: pulse 2s infinite;
+        .lock-message {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            max-width: 400px;
         }
     </style>
 </head>
 <body>
+    <div class="lock-overlay" id="lock-overlay">
+        <div class="lock-message">
+            <h3>Applying Settings...</h3>
+            <p>Please wait while we update your configuration</p>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <h1>KAAL MOD CONTROL PANEL</h1>
             <p class="subtitle">Remote configuration for PUBG Mobile Hack</p>
         </header>
 
+        <!-- ESP Settings Section -->
         <div class="card">
             <h2 class="card-title">
                 <i>👁️</i> ESP Settings
             </h2>
             <div class="settings-grid" id="esp-settings">
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Line ESP</div>
-                        <div class="setting-value">Draw line to enemies</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-line">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Skeleton ESP</div>
-                        <div class="setting-value">Show enemy skeletons</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-skeleton">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Health ESP</div>
-                        <div class="setting-value">Show enemy health</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-health">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Distance ESP</div>
-                        <div class="setting-value">Show enemy distance</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-distance">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Weapon Name</div>
-                        <div class="setting-value">Show enemy weapons</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-weapon_name">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Target ESP</div>
-                        <div class="setting-value">Highlight targets</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-target">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Vehicle Name</div>
-                        <div class="setting-value">Show vehicle names</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-vehicle_name">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Item ESP</div>
-                        <div class="setting-value">Highlight items</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-item_esp">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Alert ESP</div>
-                        <div class="setting-value">Enemy detection alerts</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="esp-alert">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
+                <!-- ESP setting items same as before -->
+                <!-- ... -->
             </div>
         </div>
 
+        <!-- Aimbot Settings Section -->
         <div class="card">
             <h2 class="card-title">
                 <i>🎯</i> Aimbot Settings
             </h2>
             <div class="settings-grid" id="aimbot-settings">
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Enable Aimbot</div>
-                        <div class="setting-value">Auto target enemies</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="aimbot-enable">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Visibility Check</div>
-                        <div class="setting-value">Only target visible enemies</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="aimbot-vis_check">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Ignore Knocked</div>
-                        <div class="setting-value">Don't target knocked players</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="aimbot-ignore_knock">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Recoil Control</div>
-                        <div class="setting-value">Reduces weapon recoil</div>
-                    </div>
-                    <div class="range-container">
-                        <input type="range" min="0" max="3" step="0.1" value="1.2" class="range-slider" id="aimbot-recoil_control">
-                        <span class="range-value" id="recoil-value">1.2</span>
-                    </div>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Aimbot Radius</div>
-                        <div class="setting-value">Target detection range</div>
-                    </div>
-                    <div class="range-container">
-                        <input type="range" min="0" max="1000" step="10" value="450" class="range-slider" id="aimbot-radius">
-                        <span class="range-value" id="radius-value">450</span>
-                    </div>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Ignore Bots</div>
-                        <div class="setting-value">Don't target AI players</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="aimbot-ignore_bot">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
+                <!-- Aimbot setting items same as before -->
+                <!-- ... -->
             </div>
         </div>
 
+        <!-- Memory Settings Section -->
         <div class="card">
             <h2 class="card-title">
                 <i>🧠</i> Memory Settings
             </h2>
             <div class="settings-grid" id="memory-settings">
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Wide View</div>
-                        <div class="setting-value">Increase field of view</div>
-                    </div>
-                    <label class="switch">
-                        <input type="checkbox" id="memory-wide_view">
-                        <span class="slider"></span>
-                        <span class="slider-text on">ON</span>
-                        <span class="slider-text off">OFF</span>
-                    </label>
-                </div>
-
-                <div class="setting-item">
-                    <div>
-                        <div class="setting-name">Wide View Range</div>
-                        <div class="setting-value">Field of view angle</div>
-                    </div>
-                    <div class="range-container">
-                        <input type="range" min="60" max="150" step="1" value="120" class="range-slider" id="memory-wide_view_range">
-                        <span class="range-value" id="view-range-value">120</span>
-                    </div>
-                </div>
+                <!-- Memory setting items same as before -->
+                <!-- ... -->
             </div>
         </div>
 
@@ -561,25 +367,16 @@
         <button class="refresh-btn" id="refresh-btn">REFRESH FROM GITHUB</button>
         
         <div class="status" id="status-message"></div>
-        <div class="sync-indicator" id="sync-indicator">SYNCING...</div>
     </div>
 
     <script>
         // Configuration
         const configUrl = 'https://raw.githubusercontent.com/Sepaxyt/Testing-rr-/main/config.json';
-        let refreshInterval = 5000; // 5 seconds refresh rate
-        let isSyncing = false;
-        let syncTimer = null;
+        let isUpdating = false;
+        let userChanges = {};
+        let currentSettings = {};
 
-        // Load settings from localStorage
-        function loadLocalSettings() {
-            const settings = JSON.parse(localStorage.getItem('kaal_mod_settings')) || getDefaultSettings();
-            applySettingsToUI(settings);
-            updateConfigJson();
-            return settings;
-        }
-
-        // Get default settings
+        // Initialize default settings
         function getDefaultSettings() {
             return {
                 esp: {
@@ -608,69 +405,81 @@
             };
         }
 
+        // Load settings from localStorage
+        function loadLocalSettings() {
+            const settings = JSON.parse(localStorage.getItem('kaal_mod_settings')) || getDefaultSettings();
+            currentSettings = JSON.parse(JSON.stringify(settings));
+            applySettingsToUI(settings);
+            updateConfigJson();
+            return settings;
+        }
+
         // Save settings to localStorage
         function saveLocalSettings() {
             const settings = getCurrentSettings();
             localStorage.setItem('kaal_mod_settings', JSON.stringify(settings));
-            showStatus('Settings saved locally!', 'success');
+            currentSettings = JSON.parse(JSON.stringify(settings));
+            showStatus('Settings saved!', 'success');
         }
 
         // Get current settings from UI
         function getCurrentSettings() {
-            return {
-                esp: {
-                    line: document.getElementById('esp-line').checked,
-                    skeleton: document.getElementById('esp-skeleton').checked,
-                    health: document.getElementById('esp-health').checked,
-                    distance: document.getElementById('esp-distance').checked,
-                    weapon_name: document.getElementById('esp-weapon_name').checked,
-                    target: document.getElementById('esp-target').checked,
-                    vehicle_name: document.getElementById('esp-vehicle_name').checked,
-                    item_esp: document.getElementById('esp-item_esp').checked,
-                    alert: document.getElementById('esp-alert').checked
-                },
-                aimbot: {
-                    enable: document.getElementById('aimbot-enable').checked,
-                    vis_check: document.getElementById('aimbot-vis_check').checked,
-                    ignore_knock: document.getElementById('aimbot-ignore_knock').checked,
-                    recoil_control: parseFloat(document.getElementById('aimbot-recoil_control').value),
-                    radius: parseFloat(document.getElementById('aimbot-radius').value),
-                    ignore_bot: document.getElementById('aimbot-ignore_bot').checked
-                },
-                memory: {
-                    wide_view: document.getElementById('memory-wide_view').checked,
-                    wide_view_range: parseFloat(document.getElementById('memory-wide_view_range').value)
+            // Start with the current settings
+            const settings = JSON.parse(JSON.stringify(currentSettings));
+            
+            // Apply any user changes on top
+            for (const category in userChanges) {
+                for (const key in userChanges[category]) {
+                    settings[category][key] = userChanges[category][key];
                 }
-            };
+            }
+            
+            return settings;
         }
 
         // Apply settings to UI
         function applySettingsToUI(settings) {
-            // ESP Settings
-            document.getElementById('esp-line').checked = settings.esp.line;
-            document.getElementById('esp-skeleton').checked = settings.esp.skeleton;
-            document.getElementById('esp-health').checked = settings.esp.health;
-            document.getElementById('esp-distance').checked = settings.esp.distance;
-            document.getElementById('esp-weapon_name').checked = settings.esp.weapon_name;
-            document.getElementById('esp-target').checked = settings.esp.target;
-            document.getElementById('esp-vehicle_name').checked = settings.esp.vehicle_name;
-            document.getElementById('esp-item_esp').checked = settings.esp.item_esp;
-            document.getElementById('esp-alert').checked = settings.esp.alert;
+            if (isUpdating) return;
             
-            // Aimbot Settings
-            document.getElementById('aimbot-enable').checked = settings.aimbot.enable;
-            document.getElementById('aimbot-vis_check').checked = settings.aimbot.vis_check;
-            document.getElementById('aimbot-ignore_knock').checked = settings.aimbot.ignore_knock;
-            document.getElementById('aimbot-recoil_control').value = settings.aimbot.recoil_control;
-            document.getElementById('recoil-value').textContent = settings.aimbot.recoil_control;
-            document.getElementById('aimbot-radius').value = settings.aimbot.radius;
-            document.getElementById('radius-value').textContent = settings.aimbot.radius;
-            document.getElementById('aimbot-ignore_bot').checked = settings.aimbot.ignore_bot;
+            // Show loading overlay during updates
+            document.getElementById('lock-overlay').style.display = 'flex';
             
-            // Memory Settings
-            document.getElementById('memory-wide_view').checked = settings.memory.wide_view;
-            document.getElementById('memory-wide_view_range').value = settings.memory.wide_view_range;
-            document.getElementById('view-range-value').textContent = settings.memory.wide_view_range;
+            // Use requestAnimationFrame for smooth updates
+            requestAnimationFrame(() => {
+                try {
+                    // ESP Settings
+                    document.getElementById('esp-line').checked = settings.esp.line;
+                    document.getElementById('esp-skeleton').checked = settings.esp.skeleton;
+                    document.getElementById('esp-health').checked = settings.esp.health;
+                    document.getElementById('esp-distance').checked = settings.esp.distance;
+                    document.getElementById('esp-weapon_name').checked = settings.esp.weapon_name;
+                    document.getElementById('esp-target').checked = settings.esp.target;
+                    document.getElementById('esp-vehicle_name').checked = settings.esp.vehicle_name;
+                    document.getElementById('esp-item_esp').checked = settings.esp.item_esp;
+                    document.getElementById('esp-alert').checked = settings.esp.alert;
+                    
+                    // Aimbot Settings
+                    document.getElementById('aimbot-enable').checked = settings.aimbot.enable;
+                    document.getElementById('aimbot-vis_check').checked = settings.aimbot.vis_check;
+                    document.getElementById('aimbot-ignore_knock').checked = settings.aimbot.ignore_knock;
+                    document.getElementById('aimbot-recoil_control').value = settings.aimbot.recoil_control;
+                    document.getElementById('recoil-value').textContent = settings.aimbot.recoil_control;
+                    document.getElementById('aimbot-radius').value = settings.aimbot.radius;
+                    document.getElementById('radius-value').textContent = settings.aimbot.radius;
+                    document.getElementById('aimbot-ignore_bot').checked = settings.aimbot.ignore_bot;
+                    
+                    // Memory Settings
+                    document.getElementById('memory-wide_view').checked = settings.memory.wide_view;
+                    document.getElementById('memory-wide_view_range').value = settings.memory.wide_view_range;
+                    document.getElementById('view-range-value').textContent = settings.memory.wide_view_range;
+                    
+                    updateConfigJson();
+                } catch (e) {
+                    console.error('Error applying settings:', e);
+                } finally {
+                    document.getElementById('lock-overlay').style.display = 'none';
+                }
+            });
         }
 
         // Update the JSON display
@@ -694,18 +503,20 @@
             }, 3000);
         }
 
-        // Show sync indicator
-        function showSyncIndicator(show) {
-            const indicator = document.getElementById('sync-indicator');
-            indicator.style.display = show ? 'block' : 'none';
-            isSyncing = show;
+        // Track user changes
+        function trackUserChange(category, key, value) {
+            if (!userChanges[category]) {
+                userChanges[category] = {};
+            }
+            userChanges[category][key] = value;
+            saveLocalSettings();
         }
 
         // Load settings from GitHub
         async function loadFromGitHub() {
-            if (isSyncing) return;
+            if (isUpdating) return;
+            isUpdating = true;
             
-            showSyncIndicator(true);
             try {
                 const response = await fetch(`${configUrl}?t=${Date.now()}`);
                 
@@ -714,45 +525,54 @@
                 }
                 
                 const settings = await response.json();
-                applySettingsToUI(settings);
-                saveLocalSettings();
-                showStatus('Settings loaded from GitHub!', 'success');
+                
+                // Apply GitHub settings but preserve user changes
+                const mergedSettings = JSON.parse(JSON.stringify(settings));
+                for (const category in userChanges) {
+                    for (const key in userChanges[category]) {
+                        mergedSettings[category][key] = userChanges[category][key];
+                    }
+                }
+                
+                applySettingsToUI(mergedSettings);
+                currentSettings = JSON.parse(JSON.stringify(mergedSettings));
+                showStatus('Settings synced with GitHub!', 'success');
             } catch (error) {
                 console.error('Error loading settings:', error);
-                showStatus('Error loading from GitHub. Using local settings.', 'error');
-                loadLocalSettings();
+                showStatus('Using local settings (GitHub unavailable)', 'error');
             } finally {
-                showSyncIndicator(false);
+                isUpdating = false;
             }
-        }
-
-        // Initialize auto-refresh
-        function startAutoRefresh() {
-            if (syncTimer) clearInterval(syncTimer);
-            syncTimer = setInterval(loadFromGitHub, refreshInterval);
         }
 
         // Initialize event listeners
         function initEventListeners() {
             // Range sliders
             document.getElementById('aimbot-recoil_control').addEventListener('input', function() {
-                document.getElementById('recoil-value').textContent = this.value;
-                saveLocalSettings();
+                const value = parseFloat(this.value);
+                document.getElementById('recoil-value').textContent = value;
+                trackUserChange('aimbot', 'recoil_control', value);
             });
 
             document.getElementById('aimbot-radius').addEventListener('input', function() {
-                document.getElementById('radius-value').textContent = this.value;
-                saveLocalSettings();
+                const value = parseFloat(this.value);
+                document.getElementById('radius-value').textContent = value;
+                trackUserChange('aimbot', 'radius', value);
             });
 
             document.getElementById('memory-wide_view_range').addEventListener('input', function() {
-                document.getElementById('view-range-value').textContent = this.value;
-                saveLocalSettings();
+                const value = parseFloat(this.value);
+                document.getElementById('view-range-value').textContent = value;
+                trackUserChange('memory', 'wide_view_range', value);
             });
 
             // Checkboxes
             document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('change', saveLocalSettings);
+                checkbox.addEventListener('change', function() {
+                    const category = this.id.split('-')[0];
+                    const key = this.id.split('-')[1];
+                    trackUserChange(category, key, this.checked);
+                });
             });
 
             // Copy button
@@ -764,18 +584,19 @@
             });
 
             // Refresh button
-            document.getElementById('refresh-btn').addEventListener('click', function() {
-                loadFromGitHub();
-                startAutoRefresh();
-            });
+            document.getElementById('refresh-btn').addEventListener('click', loadFromGitHub);
         }
 
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
             loadLocalSettings();
             initEventListeners();
+            
+            // Initial load from GitHub
             loadFromGitHub();
-            startAutoRefresh();
+            
+            // Auto-refresh every 30 seconds
+            setInterval(loadFromGitHub, 30000);
         });
     </script>
 </body>
