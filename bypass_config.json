@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "bypasses": [
+        {
+            "type": "patch",
+            "lib": "libanogs.so",
+            "offset": "0x2BC6B0",
+            "hex": "C0 03 5F D6"
+        },
+        {
+            "type": "patch",
+            "lib": "libanogs.so",
+            "offset": "0x3BAC98",
+            "hex": "00 00 80 D2 C0 03 5F D6"
+        },
+        {
+            "type": "patch",
+            "lib": "libanogs.so",
+            "offset": "0x45FD4C",
+            "hex": "00 00 80 D2 C0 03 5F D6"
+        },
+        {
+            "type": "patch",
+            "lib": "libUE4.so",
+            "offset": "0x5FAAB44",
+            "hex": "00 00 80 D2 C0 03 5F D6"
+        },
+        {
+            "type": "patch",
+            "lib": "libUE4.so",
+            "offset": "0x66874FC",
+            "hex": "00 00 80 D2 C0 03 5F D6"
+        },
+        {
+            "type": "patch",
+            "lib": "libUE4.so",
+            "offset": "0xB194DE4",
+            "hex": "00 00 80 D2 C0 03 5F D6"
+        }
+    ]
+}
