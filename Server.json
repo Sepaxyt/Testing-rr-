@@ -1,5 +1,5 @@
 {
-  "isActive": false,
+  "isActive": true,
   "libUrl": "https://github.com/Sepaxyt/Testing-rr-/raw/refs/heads/main/libbgmi.so",
   "maintenanceMessage": "Custom maintenance message",
   "welcomedMessage": "Online Server Running...."
