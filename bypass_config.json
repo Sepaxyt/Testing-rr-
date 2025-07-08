@@ -3,17 +3,17 @@
     "patches": [
         {
             "libName": "libanogs.so",
-            "offset": "0x1C4AC890",
+            "offset": "0x1C4AC8",
             "hexBytes": "00 00 80 D2 C0 03 5F D6"
         },
         {
             "libName": "libanogs.so",
-            "offset": "0x1C5BFC37",
+            "offset": "0x1C5BFC",
             "hexBytes": "00 00 80 D2 C0 03 5F D6"
         },
         {
             "libName": "libanogs.so",
-            "offset": "0x1C6128AF",
+            "offset": "0x1C6128",
             "hexBytes": "00 00 80 D2 C0 03 5F D6"
         }
     ]
